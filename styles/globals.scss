@@ -1,0 +1,69 @@
+//Normalize style
+@import "normalize";
+@include normalize();
+//Fonts
+@import "./fonts";
+//Variables and mixins
+@import "./variables";
+@import "./mixins";
+//Slick slider
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
+html,
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    @include font(24px, 700, 24px, #fff)
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1260px;
+    margin: 0 auto;
+} 
+
+.row {
+    margin: 0 10px;
+}
+
+//Custom style slick slider
+.slick-track {
+    width: max-content !important;
+}
+.slick-next, .slick-prev {
+    &::before {
+        display: none;
+    }
+}
+.slick-disabled {
+    display: none;
+}
+
+

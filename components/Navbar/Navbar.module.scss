@@ -1,0 +1,19 @@
+@import "../../styles/mixins";
+
+.navigation {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    &_wrapper {
+        @include display_flex(row, flex-start, center, nowrap);
+        height: 80px;
+    }
+
+    a {
+        @include display_flex(row, center, center, nowrap);
+        gap: 24px;
+    }
+}

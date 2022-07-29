@@ -1,0 +1,72 @@
+@import "../../styles/mixins";
+
+.slider {
+    margin: 35px 0;
+    &_wrapper {
+        &__header {
+            @include display_flex(row, space-between, center, nowrap);//$flex-direction, $justify-content, $align-item, $flex-wrap
+            margin-bottom: 44px;
+            width: 100%;
+
+            h2 {
+                @include font(36px, 700, 47px, #000);
+            }
+
+            a {
+                @include display_flex(row, center, center, nowrap);
+                @include font(18px, 400, 24px, #BE123C);
+                gap: 8px;
+
+                &:hover {
+                    filter:  drop-shadow(0 0 1px #BE123C);
+                }
+            }
+        }
+
+        &__body {
+            width: 100%;
+            position: relative;
+
+            .next_arrow_slider {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translate(64px, -50%);
+                width: 48px;
+                height: 48px;
+                z-index: 1000;
+
+                &:hover {
+                    filter: drop-shadow(0 0 1px #6B7280);
+                }
+            }
+
+            .prev_arrow_slider {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translate(-64px, -50%);
+                width: 48px;
+                height: 48px;
+                z-index: 1000;
+
+                &:hover {
+                    filter: drop-shadow(0 0 1px #6B7280);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .next_arrow_slider, .prev_arrow_slider {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .next_arrow_slider {
+        transform: translate(-6px, -50%) !important;
+    }
+    .prev_arrow_slider {
+        transform: translate(6px, -50%) !important;
+    }
+}

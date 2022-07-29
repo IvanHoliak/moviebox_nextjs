@@ -1,0 +1,33 @@
+@import "../../styles/mixins";
+
+.footer {
+    @include display_flex(row, center, center, nowrap);
+    margin: 120px 0 60px 0;
+    width: 100%;
+
+    &_container {
+        @include display_flex(column, center, center, nowrap);
+        gap: 36px;
+        max-width: 492px;
+
+        .social_links, .useful_links {
+            @include display_flex(row, center, center, nowrap);
+            gap: 48px;
+
+            a:hover {
+                filter: drop-shadow(0 0 1px #000);
+            }
+        }
+
+        .useful_links {
+            a {
+                @include font(18px, 700, 23px, #111827);
+            }
+        }
+
+        .autor_sign {
+            text-align: center;
+            @include font(18px, 700, 23px, #6B7280);
+        }
+    }
+}

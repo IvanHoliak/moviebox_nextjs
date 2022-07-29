@@ -1,0 +1,12 @@
+.card_wrapper {
+    width: 330px;
+    
+}
+
+@media (max-width: 1440px) {
+    .card_wrapper {
+        width: auto;
+        display: flex;
+        justify-content: center;
+    }
+}
