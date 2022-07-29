@@ -2,6 +2,7 @@
 
 .slider {
     margin: 35px 0;
+    position: relative;
     &_wrapper {
         &__header {
             @include display_flex(row, space-between, center, nowrap);//$flex-direction, $justify-content, $align-item, $flex-wrap
@@ -25,7 +26,6 @@
 
         &__body {
             width: 100%;
-            position: relative;
 
             .next_arrow_slider {
                 position: absolute;

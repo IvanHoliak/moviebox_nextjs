@@ -1,36 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FC, createRef, useEffect } from "react";
+import { FC, createRef } from "react";
 import Slider from "react-slick";
-import Card from "../Cards/Card";
+import { IMovie, ISliderData } from "../../types";
+import CardMovie from "../Cards/CardMovie";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
 
 import styles from "./Slider.module.scss";
 
-export interface IMovie {
-    adult: boolean;
-    backdrop_path: string;
-    genre_ids: number[];
-    id: number;
-    original_language: number;
-    original_title: number;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
-}
-
-interface ISliderMovies {
-    header_title: string;
-    data?: IMovie[];
-}
-
-const SliderMovies: FC<ISliderMovies> = ({ header_title, data }) => {
+const SliderMovies: FC<ISliderData<IMovie>> = ({ header_title, data }) => {
     const customeSlider = createRef<Slider>();
 
     const settingsSlider = {
@@ -87,10 +66,6 @@ const SliderMovies: FC<ISliderMovies> = ({ header_title, data }) => {
         ],
     };
 
-    useEffect(() => {
-        console.log(customeSlider.current);
-    }, [customeSlider]);
-
     return (
         <div className={styles.slider}>
             <div className="container">
@@ -113,7 +88,7 @@ const SliderMovies: FC<ISliderMovies> = ({ header_title, data }) => {
                     <div className={styles.slider_wrapper__body}>
                         <Slider {...settingsSlider} ref={customeSlider}>
                             {data?.map((item) => (
-                                <Card key={item.id} {...item} />
+                                <CardMovie key={item.id} {...item} />
                             ))}
                         </Slider>
                     </div>

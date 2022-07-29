@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
-import { ISlideHeader } from "./SliderHeader";
+import { ISlideHeader } from "../../types";
 
 import styles from "./SliderHeader.module.scss";
 

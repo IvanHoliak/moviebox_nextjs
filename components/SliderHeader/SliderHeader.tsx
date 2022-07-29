@@ -1,17 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ISlideHeader } from "../../types";
 import SlideHeader from "./SlideHeader";
 import styles from "./SliderHeader.module.scss";
-
-export interface ISlideHeader {
-    id: number;
-    title: string;
-    body: string;
-    rate: {
-        imdb: string;
-        tomato: string;
-    };
-    img_src: string;
-};
 
 const SliderHeaderData: ISlideHeader[] = [
     {

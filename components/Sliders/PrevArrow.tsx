@@ -1,13 +1,8 @@
 import Image from "next/image";
 import { FC } from "react";
+import { ISliderArrow } from "../../types";
 
 import styles from "./Slider.module.scss";
-
-interface ISliderArrow {
-    className?: string;
-    style?: string;
-    onClick: () => void;
-};
 
 const PrevArrow: FC<ISliderArrow> = ({className, style, onClick}) => {
     return (

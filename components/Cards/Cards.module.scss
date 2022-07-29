@@ -1,6 +1,48 @@
-.card_wrapper {
+@import "../../styles/mixins";
+
+.card{
     width: 330px;
+    &_wrapper {
+        max-width: 250px;
+        @include display_flex(column, flex-start, flex-start, nowrap);
+        cursor: pointer;
+        
+        &__image {
+            transition: all .3s ease;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
     
+        &__body {
+            width: 100%;
+
+            &_release_date {
+                @include font(12px, 700, 16px, #9CA3AF);
+                margin: 12px 0;
+            }
+
+            &_title, &_name {
+                @include font(18px, 700, 23px, #111827);
+            }
+
+            &_name {
+                margin-top: 12px;
+            }
+
+            .__imdb {
+                @include display_flex(row, flex-start, center, nowrap);
+                gap: 10px;
+                @include font(12px, 400, 12px, #111827);
+                margin: 12px 0;
+            }
+
+            &_genres {
+                @include font(12px, 700, 16px, #9CA3AF);
+            }
+        }
+    }
 }
 
 @media (max-width: 1440px) {

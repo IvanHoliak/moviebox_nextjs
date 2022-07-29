@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+import { ISliderVideos } from "../../types";
 
 import styles from "./Slider.module.scss";
-
-interface ISliderVideos {
-    header_title: string;
-};
 
 const SliderVideos: FC<ISliderVideos> = ({header_title}) => {
     return (
