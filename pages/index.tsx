@@ -3,8 +3,7 @@ import Footer from "../components/Footer/Footer";
 
 import Navbar from "../components/Navbar/Navbar";
 import SliderHeader from "../components/SliderHeader/SliderHeader";
-import SliderActors from "../components/Sliders/SliderActors";
-import SliderMovies from "../components/Sliders/SliderMovies";
+import SliderContent from "../components/Sliders/SliderContent";
 import SliderVideos from "../components/Sliders/SliderVideos";
 import { getPeople, getPopularMovies, getUpcomingMovies } from "../libs/getData";
 import { IActor, IHome, IMovie } from "../types";
@@ -14,20 +13,26 @@ const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
         <header>
             <Navbar />
             <SliderHeader />
-            <SliderMovies 
+            <SliderContent
                 header_title="Popular Movies"
                 data={popular}
+                next="/movies/popular"
+                type="movies"
             /> 
-            <SliderMovies 
+            <SliderContent 
                 header_title="Upcoming Movies"
                 data={upcoming}
+                next="/movies/upcoming"
+                type="movies"
             /> 
-            <SliderVideos 
+            {/* <SliderVideos 
                 header_title="Exclusive Videos"
-            />
-            <SliderActors 
+            /> */}
+            <SliderContent 
                 header_title="Featured Casts"
                 data={people}
+                next="/actors"
+                type="actors"
             />
             <Footer />
         </header>

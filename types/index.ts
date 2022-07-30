@@ -16,7 +16,7 @@ export interface IMovie {
     vote_count: number;
     media_type?: string;
 };
-
+//Data getPeople
 export interface IActor {
     adult: boolean;
     gender: number;
@@ -35,9 +35,9 @@ export interface IGenres {
 
 //Home page
 export interface IHome {
-    popular?: IMovie[];
-    upcoming?: IMovie[];
-    people?: IActor[];
+    popular: IMovie[];
+    upcoming: IMovie[];
+    people: IActor[];
 };
 
 //Header
@@ -57,13 +57,19 @@ export interface ISliderArrow {
     className?: string;
     style?: string;
     onClick: () => void;
+    src: string;
+    alt: string;
+    customClass: string;
 };
-export interface ISliderActors {
+export interface ISliderData<T1, T2> {
     header_title: string;
+    data?: T1[] | T2[];
+    next: string;
+    type: string;
 };
-export interface ISliderData<T> {
-    header_title: string;
-    data?: T[];
+export interface ICardContent<T1, T2> {
+    data: T1 | T2;
+    type: string;
 };
 export interface ISliderVideos {
     header_title: string;

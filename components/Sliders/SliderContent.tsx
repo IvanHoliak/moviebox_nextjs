@@ -1,15 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { createRef, FC } from "react";
+import { FC, createRef } from "react";
 import Slider from "react-slick";
-import { IActor, ISliderData } from "../../types";
-import CardActor from "../Cards/CardActor";
-import NextArrow from "./NextArrow";
-import PrevArrow from "./PrevArrow";
+import { IMovie, IActor, ISliderData } from "../../types";
+import CardContent from "../Cards/CardContent";
 
 import styles from "./Slider.module.scss";
+import SliderArrow from "./SliderArrow";
 
-const SliderActors: FC<ISliderData<IActor>> = ({header_title, data}) => {
+const SliderContent: FC<ISliderData<IMovie, IActor>> = ({ header_title, data, next, type }) => {
     const customeSlider = createRef<Slider>();
 
     const settingsSlider = {
@@ -21,15 +20,21 @@ const SliderActors: FC<ISliderData<IActor>> = ({header_title, data}) => {
         initialSlide: 0,
         variableWidth: true,
         nextArrow: (
-            <NextArrow
-                className="slick-arrow slick-prev slick-disabled"
+            <SliderArrow
+                className="slick-arrow slick-next slick-disabled"
                 onClick={() => customeSlider.current?.slickNext()}
+                src="/assets/img/next_slider.svg"
+                alt="Next Arrow"
+                customClass="next_arrow_slider"
             />
         ),
         prevArrow: (
-            <PrevArrow
+            <SliderArrow
                 className="slick-arrow slick-prev slick-disabled"
                 onClick={() => customeSlider.current?.slickPrev()}
+                src="/assets/img/prev_slider.svg"
+                alt="Prev Arrow"
+                customClass="prev_arrow_slider"
             />
         ),
         responsive: [
@@ -67,16 +72,17 @@ const SliderActors: FC<ISliderData<IActor>> = ({header_title, data}) => {
     };
 
     return (
-        <div className="slider">
+        <div className={styles.slider}>
             <div className="container">
                 <div className="row">
                     <div className={styles.slider_wrapper__header}>
                         <h2>{header_title}</h2>
-                        <Link href="#">
+                        <Link href={next}>
                             <a>
                                 See more
-                                <Image 
-                                    src="/assets/img/arrow_right.svg" 
+                                <Image
+                                    priority
+                                    src="/assets/img/arrow_right.svg"
                                     alt="Arrow Right"
                                     width="20px"
                                     height="20px"
@@ -87,7 +93,7 @@ const SliderActors: FC<ISliderData<IActor>> = ({header_title, data}) => {
                     <div className={styles.slider_wrapper__body}>
                         <Slider {...settingsSlider} ref={customeSlider}>
                             {data?.map((item) => (
-                                <CardActor key={item.id} {...item} />
+                                <CardContent key={item.id} data={item} type={type} />
                             ))}
                         </Slider>
                     </div>
@@ -97,4 +103,4 @@ const SliderActors: FC<ISliderData<IActor>> = ({header_title, data}) => {
     );
 };
 
-export default SliderActors;
+export default SliderContent;
