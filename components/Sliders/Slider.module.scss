@@ -34,7 +34,6 @@
                 transform: translate(64px, -50%);
                 width: 48px;
                 height: 48px;
-                z-index: 1000;
 
                 &:hover {
                     filter: drop-shadow(0 0 1px #6B7280);
@@ -48,7 +47,6 @@
                 transform: translate(-64px, -50%);
                 width: 48px;
                 height: 48px;
-                z-index: 1000;
 
                 &:hover {
                     filter: drop-shadow(0 0 1px #6B7280);
