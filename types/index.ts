@@ -1,31 +1,31 @@
 //Data getMovies
 export interface IMovie {
-    adult: boolean;
-    backdrop_path: string;
-    genre_ids: number[] | string[];
-    id: number;
-    original_language: number;
-    original_title: number;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
+    adult?: boolean;
+    backdrop_path?: string;
+    genre_ids?: number[] | string[];
+    id?: number;
+    original_language?: number;
+    original_title?: number;
+    overview?: string;
+    popularity?: number;
+    poster_path?: string;
+    release_date?: string;
+    title?: string;
+    video?: boolean;
+    vote_average?: number;
+    vote_count?: number;
     media_type?: string;
 };
 //Data getPeople
 export interface IActor {
-    adult: boolean;
-    gender: number;
-    id: number;
-    known_for: IMovie[];
-    known_for_department: string;
-    name: string;
-    popularity: number;
-    profile_path: string;
+    adult?: boolean;
+    gender?: number;
+    id?: number;
+    known_for?: IMovie[];
+    known_for_department?: string;
+    name?: string;
+    popularity?: number;
+    profile_path?: string;
 };
 
 export interface IGenres {

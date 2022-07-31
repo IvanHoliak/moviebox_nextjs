@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+import { useEffect, useRef } from "react";
 import Footer from "../components/Footer/Footer";
 
 import Navbar from "../components/Navbar/Navbar";
@@ -10,9 +11,7 @@ import { IActor, IHome, IMovie } from "../types";
 
 const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
     return (
-        <header>
-            <Navbar />
-            <SliderHeader />
+        <>
             <SliderContent
                 header_title="Popular Movies"
                 data={popular}
@@ -34,8 +33,7 @@ const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
                 next="/actors"
                 type="actors"
             />
-            <Footer />
-        </header>
+        </>
     );
 };
 
