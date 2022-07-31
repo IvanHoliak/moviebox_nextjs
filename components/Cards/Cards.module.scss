@@ -3,7 +3,7 @@
 .card{
     width: 330px;
     &_wrapper {
-        max-width: 250px;
+        width: 250px;
         @include display_flex(column, flex-start, flex-start, nowrap);
         cursor: pointer;
 
@@ -32,10 +32,16 @@
             }
         }
         
-        &__image {
-            transition: all .3s ease;
-            &:hover {
-                transform: scale(1.1);
+        &__image_box {
+            width: 250px;
+            height: 370px;
+            position: relative;
+
+            &__image{
+                transition: all .3s ease;
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
         }
 

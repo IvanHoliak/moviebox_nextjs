@@ -71,6 +71,14 @@ export interface ICardContent<T1, T2> {
     data: T1 | T2;
     type: string;
 };
+export interface IImageCardBox {
+    src: string;
+    srcError: string;
+    alt: string;
+    width: string;
+    height: string;
+    className: string;
+};
 export interface ISliderVideos {
     header_title: string;
 };

@@ -1,41 +1,28 @@
 import Image from "next/image";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { genres } from "../../libs/genres";
 import { IMovie } from "../../types";
+import ImageCardBox from "../Image/ImageCardBox";
 
 import styles from "./Cards.module.scss";
 
-const MovieContent: FC<IMovie> = ({adult, backdrop_path, genre_ids, id, original_language, original_title, overview, popularity, poster_path, release_date, title, video, vote_average, vote_count}) => {
-    const [isLoaded, setIsLoaded] = useState<boolean>(false);
-
+const MovieContent: FC<IMovie> = ({genre_ids, poster_path, release_date, title, vote_average}) => {
     genre_ids = genre_ids?.map((id) => {
         return genres.filter((genres) => genres.id === id)[0].name;
     });
 
     return (
-        <div className={isLoaded ? "" : styles.card_wrapper__skeleton}>
-            {
-                poster_path ? (
-                    <Image
-                        loader={() => `https://image.tmdb.org/t/p/w500${poster_path}`}
-                        src={poster_path}
-                        alt="Actor image"
-                        width="250px"
-                        height="370px"
-                        className={styles.card_wrapper__image}
-                        onLoadingComplete={() => setIsLoaded(true)}
-                    />
-                ) : (
-                    <Image
-                        src={"/assets/img/default_user.jpg"}
-                        alt="Actor image"
-                        width="250px"
-                        height="370px"
-                        className={styles.card_wrapper__image}
-                        onLoadingComplete={() => setIsLoaded(true)}
-                    />
-                )
-            }
+        <>
+            <div className={styles.card_wrapper__image_box}>
+                <ImageCardBox
+                    src={poster_path || ""}
+                    srcError="/assets/img/no_image.png"
+                    alt="Actor image"
+                    width="250"
+                    height="370"
+                    className={styles.card_wrapper__image_box__image}
+                />
+            </div>
             <div className={styles.card_wrapper__body}>
                 <p className={styles.card_wrapper__body_release_date}>{release_date}</p>
                 <h3 className={styles.card_wrapper__body_title}>{title}</h3>
@@ -51,7 +38,7 @@ const MovieContent: FC<IMovie> = ({adult, backdrop_path, genre_ids, id, original
                 </div>
                 <p className={styles.card_wrapper__body_genres}>{genre_ids?.join(", ")}</p>
             </div>
-        </div>
+        </>
     );
 };
 
