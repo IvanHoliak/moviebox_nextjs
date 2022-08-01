@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FC, useState } from "react";
+import { MAIN_IMAGE_URL } from "../../constants";
 import { IImageCardBox } from "../../types";
 
 import styles from "./ImageCardBox.module.scss";
@@ -8,7 +9,7 @@ const ImageCardBox: FC<IImageCardBox> = ({src, srcError, alt, width, height, cla
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
     
     const customLoader = ({src}: {src: string}) => {
-        return `https://image.tmdb.org/t/p/w500${src}`;
+        return `${MAIN_IMAGE_URL}${src}`;
     };
 
     return (

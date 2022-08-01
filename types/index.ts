@@ -30,7 +30,8 @@ export interface IActor {
 
 export interface IGenres {
     id: number;
-    name: string;
+    "name_en": string;
+    "name_ua": string;
 };
 
 //Home page
@@ -83,5 +84,5 @@ export interface ISliderVideos {
     header_title: string;
 };
 //Fetch
-export type getMovies = () => Promise<IMovie[]>;
-export type getActors = () => Promise<IActor[]>;
+export type getMovies = (locale?: string, page?: number) => Promise<IMovie[]>;
+export type getActors = (locale?: string, page?: number) => Promise<IActor[]>;

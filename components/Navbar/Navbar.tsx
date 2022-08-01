@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import React, { FC, useEffect, useState } from "react";
 
 import styles from "./Navbar.module.scss";
 
 const Navbar: FC = () => {
     const [scrolled, setScrolled] = useState<boolean>(false);
+    const router = useRouter();
+    const {locale, pathname, asPath, query} = router;
 
     const onScrollHandler = () => {
         if(document.documentElement.scrollTop > 0){
@@ -13,6 +16,11 @@ const Navbar: FC = () => {
         }else{
             setScrolled(false);
         };
+    };
+
+    const onChangeLanguageHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const locale = e.target.value;
+        router.push({ pathname, query }, asPath, {locale});
     };
 
     useEffect(() => {
@@ -50,9 +58,14 @@ const Navbar: FC = () => {
                                         height="40px"
                                     />
                                 </label>
-                                <select name="language" id="language">
-                                    <option value="uk-UK">UA</option>
-                                    <option value="en-EN">EN</option>
+                                <select 
+                                    name="language" 
+                                    id="language"
+                                    onChange={onChangeLanguageHandler}
+                                    defaultValue={locale}
+                                >
+                                    <option value="ua">UA</option>
+                                    <option value="en">EN</option>
                                 </select>
                             </div>
                         </div>

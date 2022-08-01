@@ -39,9 +39,9 @@ const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async() => {
-    const popular = await getPopularMovies();
-    const upcoming = await getUpcomingMovies();
+export const getStaticProps: GetStaticProps = async({locale}) => {
+    const popular = await getPopularMovies(locale);
+    const upcoming = await getUpcomingMovies(locale);
     const people = await getPeople();
 
     return {

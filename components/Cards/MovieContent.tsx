@@ -1,14 +1,20 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { FC } from "react";
-import { genres } from "../../libs/genres";
+import { GENRES } from "../../constants";
 import { IMovie } from "../../types";
 import ImageCardBox from "../Image/ImageCardBox";
 
 import styles from "./Cards.module.scss";
 
 const MovieContent: FC<IMovie> = ({genre_ids, poster_path, release_date, title, vote_average}) => {
+    const router = useRouter();
+    const { locale } = router;
+    
     genre_ids = genre_ids?.map((id) => {
-        return genres.filter((genres) => genres.id === id)[0].name;
+        const filter = GENRES.filter((genre) => genre.id === id)[0];
+        if(locale === "ua") return filter.name_ua;
+        return filter.name_en;
     });
 
     return (
