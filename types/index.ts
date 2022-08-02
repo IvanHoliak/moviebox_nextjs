@@ -4,17 +4,60 @@ export interface IMovie {
     backdrop_path?: string;
     genre_ids?: number[] | string[];
     id?: number;
-    original_language?: number;
-    original_title?: number;
+    original_language?: string;
+    original_title?: string;
     overview?: string;
     popularity?: number;
     poster_path?: string;
     release_date?: string;
     title?: string;
     video?: boolean;
-    vote_average?: number;
+    vote_average: number;
     vote_count?: number;
     media_type?: string;
+};
+
+export interface IMovieDetails extends IMovie {
+    belongs_to_collection: {
+        id: number;
+        name: string;
+        poster_path: string;
+        backdrop_path: string;
+    };
+    budget: number;
+    genres: {id: number, name: string}[];
+    homepage: string;
+    imdb_id: string;
+    production_companies: {
+        id: number;
+        logo_path: string;
+        name: string;
+        origin_country: string;
+    }[];
+    production_countries: {iso_3166_1: string; name: string}[];
+    revenue: number;
+    runtime: number;
+    spoken_languages: {
+        english_name: string; 
+        iso_639_1: string; 
+        name: string;
+    }[];
+    status: string;
+    tagline: string;
+    videos: {
+        results: {
+            iso_639_1: string;
+            iso_3166_1: string;
+            name: string;
+            key: string;
+            site: string;
+            size: number;
+            type: string;
+            official: boolean;
+            published_at: string;
+            id: string;
+        }[]
+    };
 };
 //Data getPeople
 export interface IActor {
@@ -72,7 +115,7 @@ export interface ICardContent<T1, T2> {
     data: T1 | T2;
     type: string;
 };
-export interface IImageCardBox {
+export interface IImageBox {
     src: string;
     srcError: string;
     alt: string;
@@ -84,5 +127,6 @@ export interface ISliderVideos {
     header_title: string;
 };
 //Fetch
-export type getMovies = (locale?: string, page?: number) => Promise<IMovie[]>;
+export type getMovies = (locale?: string, page?: number, query?: string) => Promise<IMovie[]>;
+export type getMovie = (locale?: string, id?: string) => Promise<IMovieDetails>;
 export type getActors = (locale?: string, page?: number) => Promise<IActor[]>;

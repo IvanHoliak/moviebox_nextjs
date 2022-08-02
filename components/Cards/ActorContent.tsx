@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IActor } from "../../types";
-import ImageCardBox from "../Image/ImageCardBox";
+import ImageBox from "../Image/ImageBox";
 
 import styles from "./Cards.module.scss";
 
@@ -8,7 +8,7 @@ const ActorContent: FC<IActor> = ({name, profile_path}) => {
     return (
         <>
             <div className={styles.card_wrapper__image_box}>
-                <ImageCardBox
+                <ImageBox
                     src={profile_path || ""}
                     srcError="/assets/img/no_image.png"
                     alt="Actor image"

@@ -1,11 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
-import { useEffect, useRef } from "react";
-import Footer from "../components/Footer/Footer";
 
-import Navbar from "../components/Navbar/Navbar";
-import SliderHeader from "../components/SliderHeader/SliderHeader";
 import SliderContent from "../components/Sliders/SliderContent";
-import SliderVideos from "../components/Sliders/SliderVideos";
 import { getPeople, getPopularMovies, getUpcomingMovies } from "../libs/getData";
 import { IActor, IHome, IMovie } from "../types";
 

@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { FC, useState } from "react";
 import { MAIN_IMAGE_URL } from "../../constants";
-import { IImageCardBox } from "../../types";
+import { IImageBox } from "../../types";
 
 import styles from "./ImageCardBox.module.scss";
 
-const ImageCardBox: FC<IImageCardBox> = ({src, srcError, alt, width, height, className}) => {
+const ImageBox: FC<IImageBox> = ({src, srcError, alt, width, height, className}) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
     
     const customLoader = ({src}: {src: string}) => {
@@ -38,4 +38,4 @@ const ImageCardBox: FC<IImageCardBox> = ({src, srcError, alt, width, height, cla
     );
 };
 
-export default ImageCardBox;
+export default ImageBox;

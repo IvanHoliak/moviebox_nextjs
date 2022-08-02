@@ -12,7 +12,7 @@
         height: 80px;
 
         &__body {
-
+            @include display_flex(row, space-between, center, nowrap);
             &_language {
                 @include display_flex(row, center, center, nowrap);
 
@@ -61,6 +61,20 @@
     label {
         img {
             filter: invert(0%) sepia(90%) saturate(1%) hue-rotate(316deg) brightness(89%) contrast(100%);
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .navigation_wrapper {
+        h1 {
+            display: none;
+        }
+
+        &__body_language {
+            label {
+                display: none;
+            }
         }
     }
 }

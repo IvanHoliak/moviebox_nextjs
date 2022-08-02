@@ -11,6 +11,7 @@ const SliderArrow: FC<ISliderArrow> = ({className, onClick, src, alt, customClas
             onClick={onClick}
         >
             <Image 
+                priority
                 src={src}
                 alt={alt}
                 width="14px"

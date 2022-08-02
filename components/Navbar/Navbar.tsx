@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FC, useEffect, useState } from "react";
+import Search from "../Search/Search";
 
 import styles from "./Navbar.module.scss";
 
@@ -48,6 +49,7 @@ const Navbar: FC = () => {
                                 <h1>MovieBox</h1>
                             </a>
                         </Link>
+                        <Search fixed={scrolled ? true : false}/>
                         <div className={styles.navigation_wrapper__body}>
                             <div className={styles.navigation_wrapper__body_language}>
                                 <label htmlFor="language">
