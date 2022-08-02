@@ -1,0 +1,80 @@
+@import "../../styles/mixins";
+
+.search {
+    @include display_flex(row, center, center, nowrap);
+    gap: 10px;
+    width: 50%;
+    height: 36px;
+    border: 2px solid #D1D5DB;
+    border-radius: 6px;
+    padding: 0 10px;
+    position: relative;
+
+    &__input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        @include font(16px, 400, 24px, #fff);
+
+        &::placeholder {
+            @include font(16px, 400, 24px, #fff);
+        }
+    }
+
+    &__image {
+        filter: invert(99%) sepia(16%) saturate(0%) hue-rotate(312deg) brightness(101%) contrast(101%);
+    }
+
+    &__data_box {
+        width: 100%;
+        max-height: 50vh;
+        background: #fff;
+        box-shadow: 0 0 1px #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(0, 42px);
+        padding: 6px 0;
+        border-radius: 6px;
+        overflow-y: auto;
+
+        a:not(:last-child){
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+        }
+        
+        &__data {
+            @include font(14px, 700, 18px, #000);
+            @include display_flex(row, flex-start, center, wrap);
+            gap: 5px;
+            padding: 6px;
+            width: 100%;
+            cursor: pointer;
+
+
+            &:hover {
+                p {
+                    filter: drop-shadow(0 0 1px #000);
+                }
+            }
+
+            &_genres {
+                @include font(12px, 700, 16px, #9CA3AF);
+            }
+        }
+    }
+}
+
+.fixed {
+    border-color: #000;
+    .search__input {
+        color: #000;
+        &::placeholder {
+            color: #000;
+        }
+    }
+    .search__image {
+        filter: invert(0%) sepia(90%) saturate(1%) hue-rotate(316deg) brightness(89%) contrast(100%);
+    }
+}
