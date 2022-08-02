@@ -102,7 +102,9 @@ const Movie: NextPage<{movie: IMovieDetails}> = ({movie}) => {
                                 />
                                 {movie.runtime} {locale === "ua" ? "хв." : "min."}
                             </p>
-                            <hr align="center" width="100%" size="1" color="#000" />
+                            <div
+                                className="line"
+                            ></div>
                             <p
                                 className={styles.movie_details__main_desc_tagline}
                             >
