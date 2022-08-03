@@ -1,0 +1,19 @@
+@import "../../styles/mixins";
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    @include display_flex(row, center, center, nowrap);
+    background: #000;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 30;
+
+    &__box {
+        width: max-content;
+        height: max-content;
+        background: #000;
+    }
+}

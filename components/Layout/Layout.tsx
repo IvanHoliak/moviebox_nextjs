@@ -20,6 +20,7 @@ const Layout: FC<ILayout> = ({children}) => {
             <footer>
                 <Footer />
             </footer>
+            <div id="modal-root"></div>
         </>
     );
 };

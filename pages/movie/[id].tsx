@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import ImageBox from "../../components/Image/ImageBox";
+import Modal from "../../components/Modal/Modal";
+import SliderContent from "../../components/Sliders/SliderContent";
+import { MAIN_IMAGE_URL } from "../../constants";
 import { getMovieById } from "../../libs/getData";
 import { IMovieDetails } from "../../types";
 
@@ -66,7 +69,7 @@ const Movie: NextPage<{movie: IMovieDetails}> = ({movie}) => {
                             >
                                 <p>
                                     <Image 
-                                        src="/assets/img/arrow_down.svg"
+                                        src="/assets/img/arrow_up.svg"
                                         alt="Budget"
                                         width="20"
                                         height="20"
@@ -79,7 +82,7 @@ const Movie: NextPage<{movie: IMovieDetails}> = ({movie}) => {
                                 </p>
                                 <p>
                                     <Image 
-                                        src="/assets/img/arrow_up.svg"
+                                        src="/assets/img/arrow_down.svg"
                                         alt="Budget"
                                         width="20"
                                         height="20"
@@ -102,9 +105,7 @@ const Movie: NextPage<{movie: IMovieDetails}> = ({movie}) => {
                                 />
                                 {movie.runtime} {locale === "ua" ? "хв." : "min."}
                             </p>
-                            <div
-                                className="line"
-                            ></div>
+                            <div className="line"></div>
                             <p
                                 className={styles.movie_details__main_desc_tagline}
                             >
@@ -115,10 +116,55 @@ const Movie: NextPage<{movie: IMovieDetails}> = ({movie}) => {
                             >
                                 {movie.overview}
                             </p>
+                            <div className="line"></div>
+                            <div
+                                className={styles.movie_details__main_desc_companies}
+                            >
+                                {movie.production_companies.map(company => (
+                                    <div
+                                        key={company.id}
+                                        className={styles.movie_details__main_desc_companies_company}
+                                        title={company.name}
+                                    >
+                                        {company.logo_path ? (
+                                            <div
+                                                className={styles.movie_details__main_desc_companies_company__image}
+                                            >
+                                                <Image
+                                                    loader={() => `${MAIN_IMAGE_URL}${company.logo_path}`}
+                                                    src={company.logo_path}
+                                                    alt="Company Logo"
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div
+                                                className={styles.movie_details__main_desc_companies_company__no_image}
+                                            ></div>
+                                        )}
+                                        <span
+                                            className={styles.movie_details__main_desc_companies_company__name}
+                                        >
+                                            {company.name}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <SliderContent 
+                header_title="Videos"
+                data={movie.videos.results}
+                type="videos"
+            />
+            <SliderContent 
+                header_title="Cast"
+                data={movie.credits.cast}
+                type="actors"
+            />
         </div>
     );
 };

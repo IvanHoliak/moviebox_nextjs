@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, createRef } from "react";
 import Slider from "react-slick";
-import { IMovie, IActor, ISliderData } from "../../types";
+import { IMovie, IActor, ISliderData, IVideo } from "../../types";
 import CardContent from "../Cards/CardContent";
 
 import styles from "./Slider.module.scss";
 import SliderArrow from "./SliderArrow";
 
-const SliderContent: FC<ISliderData<IMovie, IActor>> = ({ header_title, data, next, type }) => {
+const SliderContent: FC<ISliderData<IMovie, IActor, IVideo>> = ({ header_title, data, next, type }) => {
     const customeSlider = createRef<Slider>();
 
     const settingsSlider = {
@@ -77,18 +77,20 @@ const SliderContent: FC<ISliderData<IMovie, IActor>> = ({ header_title, data, ne
                 <div className="row">
                     <div className={styles.slider_wrapper__header}>
                         <h2>{header_title}</h2>
-                        <Link href={next}>
-                            <a>
-                                See more
-                                <Image
-                                    priority
-                                    src="/assets/img/arrow_right.svg"
-                                    alt="Arrow Right"
-                                    width="20px"
-                                    height="20px"
-                                />
-                            </a>
-                        </Link>
+                        {next && (
+                            <Link href={next}>
+                                <a>
+                                    See more
+                                    <Image
+                                        priority
+                                        src="/assets/img/arrow_right.svg"
+                                        alt="Arrow Right"
+                                        width="20px"
+                                        height="20px"
+                                    />
+                                </a>
+                            </Link>
+                        )}
                     </div>
                     <div className={styles.slider_wrapper__body}>
                         <Slider {...settingsSlider} ref={customeSlider}>

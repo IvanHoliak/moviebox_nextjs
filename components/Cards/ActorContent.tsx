@@ -4,7 +4,7 @@ import ImageBox from "../Image/ImageBox";
 
 import styles from "./Cards.module.scss";
 
-const ActorContent: FC<IActor> = ({name, profile_path}) => {
+const ActorContent: FC<IActor> = ({name, profile_path, character}) => {
     return (
         <>
             <div className={styles.card_wrapper__image_box}>
@@ -21,6 +21,12 @@ const ActorContent: FC<IActor> = ({name, profile_path}) => {
                 <h3 className={styles.card_wrapper__body_name}>
                     {name}
                 </h3>
+                {character && (
+                    <>
+                        <div className="line"></div>
+                        <p className={styles.card_wrapper__body_character}>{character}</p>
+                    </>
+                )}
             </div>
         </>
     );

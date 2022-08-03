@@ -42,7 +42,7 @@ export const getSearchData: getMovies = async(locale = "en", page = 1, query = "
 };
 
 export const getMovieById: getMovie = async(locale = "en", id) => {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}`);
+    const response = await fetch(`${MAIN_URL}/movie/${id}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&append_to_response=videos,credits`);
     const json = await response.json();
 
     return json;

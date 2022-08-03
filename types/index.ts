@@ -17,6 +17,20 @@ export interface IMovie {
     media_type?: string;
 };
 
+export interface IVideo {
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    key: string;
+    key_src?: string;
+    site: string;
+    size: number;
+    type: string;
+    official: boolean;
+    published_at: string;
+    id: string;
+};
+
 export interface IMovieDetails extends IMovie {
     belongs_to_collection: {
         id: number;
@@ -45,18 +59,10 @@ export interface IMovieDetails extends IMovie {
     status: string;
     tagline: string;
     videos: {
-        results: {
-            iso_639_1: string;
-            iso_3166_1: string;
-            name: string;
-            key: string;
-            site: string;
-            size: number;
-            type: string;
-            official: boolean;
-            published_at: string;
-            id: string;
-        }[]
+        results: IVideo[]
+    };
+    credits: {
+        cast: IActor[];
     };
 };
 //Data getPeople
@@ -69,6 +75,7 @@ export interface IActor {
     name?: string;
     popularity?: number;
     profile_path?: string;
+    character?: string;
 };
 
 export interface IGenres {
@@ -105,14 +112,14 @@ export interface ISliderArrow {
     alt: string;
     customClass: string;
 };
-export interface ISliderData<T1, T2> {
+export interface ISliderData<T1, T2, T3> {
     header_title: string;
-    data?: T1[] | T2[];
-    next: string;
+    data?: T1[] | T2[] | T3[];
+    next?: string;
     type: string;
 };
-export interface ICardContent<T1, T2> {
-    data: T1 | T2;
+export interface ICardContent<T1, T2, T3> {
+    data: T1 | T2 | T3;
     type: string;
 };
 export interface IImageBox {
