@@ -70,3 +70,15 @@
         transform: translate(6px, -50%) !important;
     }
 }
+
+@media (max-width: 767px) {
+    .slider {
+        &_wrapper {
+            &__header {
+                h2 {
+                    @include font(26px, 700, 28px, #000);
+                }
+            }
+        }
+    }
+}

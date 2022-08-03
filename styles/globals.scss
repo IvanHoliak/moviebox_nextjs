@@ -67,6 +67,7 @@ body.modal-open {
 //Custom style slick slider
 .slick-track {
     width: max-content !important;
+    margin-left: 0;
 }
 .slick-next, .slick-prev {
     &::before {

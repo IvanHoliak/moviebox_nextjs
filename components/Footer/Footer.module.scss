@@ -11,8 +11,8 @@
         max-width: 492px;
 
         .social_links, .useful_links {
-            @include display_flex(row, center, center, nowrap);
-            gap: 48px;
+            @include display_flex(row, center, center, wrap);
+            gap: 20px 48px;
 
             a:hover {
                 filter: drop-shadow(0 0 1px #000);

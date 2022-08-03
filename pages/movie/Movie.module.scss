@@ -83,3 +83,17 @@
         }
     }
 }
+
+@media (max-width: 767px){ 
+    .movie_details {
+        &__main {
+            @include display_flex(column, center, center, nowrap);
+
+            &_desc {
+                &_companies {
+                    @include display_flex(row, flex-start, center, wrap);
+                }
+            }
+        }
+    }
+}
