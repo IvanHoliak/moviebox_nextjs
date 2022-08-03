@@ -101,6 +101,7 @@ export interface ISlideHeader {
         tomato: string;
     };
     img_src: string;
+    link: string;
 };
 
 //Slider

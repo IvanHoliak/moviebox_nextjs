@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FC } from "react";
 import { ISlideHeader } from "../../types";
 
 import styles from "./SliderHeader.module.scss";
 
-const SlideHeader: FC<ISlideHeader> = ({id, title, body, rate, img_src}) => {
+const SlideHeader: FC<ISlideHeader> = ({id, title, body, rate, img_src, link}) => {
     return (
         <div
             className={styles.slider__slides_slide}
@@ -56,20 +57,24 @@ const SlideHeader: FC<ISlideHeader> = ({id, title, body, rate, img_src}) => {
                             <p>
                                 {body}
                             </p>
-                            <button
-                                className={styles.slider__slides_slide__body_button}
+                            <Link
+                                href={link}
                             >
-                                <Image 
-                                    priority
-                                    src="/assets/img/play.svg"
-                                    alt="IMDB"
-                                    width="16"
-                                    height="16"
-                                />
-                                <span>
-                                    Watch trailer
-                                </span>
-                            </button>
+                                <a
+                                    className={styles.slider__slides_slide__body_button}
+                                >
+                                    <Image 
+                                        priority
+                                        src="/assets/img/play.svg"
+                                        alt="IMDB"
+                                        width="16"
+                                        height="16"
+                                    />
+                                    <span>
+                                        Watch trailer
+                                    </span>
+                                </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

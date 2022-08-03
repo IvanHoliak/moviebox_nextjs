@@ -12,7 +12,8 @@ const SliderHeaderData: ISlideHeader[] = [
             imdb: "74.0 / 100",
             tomato: "89%"
         },
-        img_src: "/assets/img/john_wick.jpg"
+        img_src: "/assets/img/john_wick.jpg",
+        link: "/movie/458156"
     },
     {
         id: 2,
@@ -22,7 +23,8 @@ const SliderHeaderData: ISlideHeader[] = [
             imdb: "57.0 / 100",
             tomato: "30%"
         },
-        img_src: "/assets/img/jurassic_park.jpg"
+        img_src: "/assets/img/jurassic_park.jpg",
+        link: "/movie/507086"
     },
     {
         id: 3,
@@ -32,7 +34,8 @@ const SliderHeaderData: ISlideHeader[] = [
             imdb: "69.0 / 100",
             tomato: "70%"
         },
-        img_src: "/assets/img/minions.jpg"
+        img_src: "/assets/img/minions.jpg",
+        link: "/movie/438148"
     },
     {
         id: 4,
@@ -42,7 +45,8 @@ const SliderHeaderData: ISlideHeader[] = [
             imdb: "68.0 / 100",
             tomato: "66%"
         },
-        img_src: "/assets/img/thor.jpg"
+        img_src: "/assets/img/thor.jpg",
+        link: "/movie/616037"
     },
     {
         id: 5,
@@ -52,7 +56,8 @@ const SliderHeaderData: ISlideHeader[] = [
             imdb: "86.0 / 100",
             tomato: "97%"
         },
-        img_src: "/assets/img/top_gun.jpg"
+        img_src: "/assets/img/top_gun.jpg",
+        link: "/movie/361743"
     },
 ];
 
@@ -97,6 +102,7 @@ const SliderHeader = () => {
                         body={slide.body}
                         rate={slide.rate}
                         img_src={slide.img_src}
+                        link={slide.link}
                     />
                 ))}
                 <div className={styles.slider__slides_pagination}>
