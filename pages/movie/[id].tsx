@@ -11,7 +11,12 @@ import { IMovieDetails } from "../../types";
 
 import styles from "./Movie.module.scss";
 
-const Movie: NextPage<{movie: IMovieDetails}> = ({movie}) => {
+interface IMoviePage {
+    movie: IMovieDetails;
+    home: boolean;
+}
+
+const Movie: NextPage<IMoviePage> = ({movie, home}) => {
     const {locale} = useRouter();
     return (
         <div className={styles.movie_details}>
@@ -176,7 +181,8 @@ export const getServerSideProps: GetServerSideProps = async({locale, params}) =>
     
     return {
         props: {
-            movie
+            movie,
+            home: false
         }
     }
 };

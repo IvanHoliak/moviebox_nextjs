@@ -89,6 +89,7 @@ export interface IHome {
     popular: IMovie[];
     upcoming: IMovie[];
     people: IActor[];
+    home: boolean;
 };
 
 //Header

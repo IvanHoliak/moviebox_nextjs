@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+import SliderHeader from "../components/SliderHeader/SliderHeader";
 
 import SliderContent from "../components/Sliders/SliderContent";
 import { getPeople, getPopularMovies, getUpcomingMovies } from "../libs/getData";
@@ -7,6 +8,7 @@ import { IActor, IHome, IMovie } from "../types";
 const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
     return (
         <>
+            <SliderHeader />
             <SliderContent
                 header_title="Popular Movies"
                 data={popular}
@@ -43,7 +45,8 @@ export const getStaticProps: GetStaticProps = async({locale}) => {
         props: {
             popular: (popular as IMovie[]),
             upcoming: (upcoming as IMovie[]),
-            people: (people as IActor[])
+            people: (people as IActor[]),
+            home: true
         }
     };
 };

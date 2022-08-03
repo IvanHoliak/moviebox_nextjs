@@ -6,7 +6,7 @@ import Search from "../Search/Search";
 
 import styles from "./Navbar.module.scss";
 
-const Navbar: FC = () => {
+const Navbar: FC<{home: boolean}> = ({home}) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const router = useRouter();
     const {locale, pathname, asPath, query} = router;
@@ -25,13 +25,15 @@ const Navbar: FC = () => {
     };
 
     useEffect(() => {
-        document.addEventListener("scroll", onScrollHandler);
-
-        return () => document.removeEventListener("scroll", onScrollHandler);
-    }, []);
+        if(home){
+            document.addEventListener("scroll", onScrollHandler);
+    
+            return () => document.removeEventListener("scroll", onScrollHandler);
+        };
+    }, [home]);
 
     return (
-        <nav className={[styles.navigation, scrolled ? styles.fixed : ""].join(" ")}>
+        <nav className={[styles.navigation, scrolled || !home ? styles.fixed : ""].join(" ")}>
             <div className="container">
                 <div className="row">
                     <div className={styles.navigation_wrapper}>
@@ -49,7 +51,7 @@ const Navbar: FC = () => {
                                 <h1>MovieBox</h1>
                             </a>
                         </Link>
-                        <Search fixed={scrolled ? true : false}/>
+                        <Search fixed={scrolled || !home ? true : false}/>
                         <div className={styles.navigation_wrapper__body}>
                             <div className={styles.navigation_wrapper__body_language}>
                                 <label htmlFor="language">

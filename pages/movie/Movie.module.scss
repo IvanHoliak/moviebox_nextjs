@@ -2,6 +2,7 @@
 
 .movie_details {
     width: 100%;
+    margin-top: 100px;
     &__main {
         width: 100%;
         @include display_flex(row, flex-start, flex-start, nowrap);

@@ -1,18 +1,17 @@
 import React, { FC } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import SliderHeader from "../SliderHeader/SliderHeader";
 
 interface ILayout {
     children: React.ReactNode;
+    home: boolean;
 }
 
-const Layout: FC<ILayout> = ({children}) => {
+const Layout: FC<ILayout> = ({children, home}) => {
     return (
         <>
             <header>
-                <Navbar />
-                <SliderHeader />
+                <Navbar home={home}/>
             </header>
             <main>
                 {children}
