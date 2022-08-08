@@ -59,7 +59,7 @@ const Search: FC<ISearch> = ({fixed}) => {
                 <div
                     className={styles.search__data_box}
                 >
-                    {data.map(item => (
+                    {data.data.map(item => (
                         <SearchList 
                             key={item.id}
                             {...item}

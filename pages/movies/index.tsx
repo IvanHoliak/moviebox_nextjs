@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import CardContent from "../../components/Cards/CardContent";
 import MovieContent from "../../components/Cards/MovieContent";
 import Pagination from "../../components/Pagination/Pagination";
@@ -9,16 +10,19 @@ import { IMovie, TypeContent } from "../../types";
 import styles from "./Movies.module.scss";
 
 const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string}> = ({data, totalPages, type_value}) => {
+    const [typeValue, setTypeValue] = useState<string>(type_value);
     const router = useRouter();
     const {locale, pathname, query} = router;
 
     const onChangeContentTypeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const content_type = e.target.value;
+        setTypeValue(content_type);
         router.push(
             { 
                 pathname, 
                 query: {
                     ...query,
+                    page: "1",
                     type: content_type
                 } 
             }, undefined, {locale}
@@ -35,7 +39,7 @@ const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string}>
                                 name="content_type" 
                                 id="content_type"
                                 onChange={onChangeContentTypeHandler}
-                                defaultValue={type_value}
+                                defaultValue={typeValue}
                             >
                                 <option value="popular">Popular</option>
                                 <option value="upcoming">Upcoming</option>
@@ -54,7 +58,7 @@ const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string}>
                     </div>
                 </div>
             </div>
-            <Pagination max={type_value === "popular" ? "500" : `${totalPages}`}/>
+            <Pagination max={type_value === "popular" ? "500" : `${totalPages}`} />
         </div>
     );
 };
