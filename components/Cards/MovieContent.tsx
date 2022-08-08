@@ -14,7 +14,7 @@ const MovieContent: FC<IMovie> = ({id, genre_ids, poster_path, release_date, tit
     genre_ids = genres((genre_ids as number[] | []), locale || "en");
 
     return (
-        <Link href={`/movie/${id}`}>
+        <Link href={`/movies/${id}`}>
             <a>
                 <div className={styles.card_wrapper__image_box}>
                     <ImageBox

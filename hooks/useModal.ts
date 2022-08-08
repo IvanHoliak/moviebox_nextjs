@@ -6,7 +6,6 @@ export const useModal: useModal = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     
     useEffect(() => {
-        console.log(isOpen);
         if(isOpen){
             document.body.classList.add("modal-open");
         }else{
@@ -18,5 +17,5 @@ export const useModal: useModal = () => {
     return {
         isOpen,
         setIsOpen
-    }
+    };
 };

@@ -9,12 +9,12 @@ import { MAIN_IMAGE_URL } from "../../constants";
 import { getMovieById } from "../../libs/getData";
 import { IMovieDetails } from "../../types";
 
-import styles from "./Movie.module.scss";
+import styles from "./Movies.module.scss";
 
 interface IMoviePage {
     movie: IMovieDetails;
     home: boolean;
-}
+};
 
 const Movie: NextPage<IMoviePage> = ({movie, home}) => {
     const {locale} = useRouter();
