@@ -1,33 +1,29 @@
 import { MAIN_URL } from "../constants";
-import { getMovies, getActors, getMovie } from "../types";
+import { GetMovies, GetActors, GetMovie } from "../types";
 
 const createLocale = (locale: string) => {
     if(locale === "ua") return "uk";
     return locale;
 };
 
-export const getPopularMovies: getMovies = async(locale = "en", page = 1) => {
-    const response = await fetch(`${MAIN_URL}/movie/popular?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&page=${page}`);
+export const getMovies: GetMovies = async(locale = "en", page = "1", type = "popular") => {
+    const response = await fetch(`${MAIN_URL}/movie/${type}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&page=${page}`);
     const json = await response.json();
 
-    return json.results;
+    return {
+        data: json.results,
+        totalPages: json.total_pages
+    };
 };
 
-export const getUpcomingMovies: getMovies = async(locale = "en", page = 1) => {
-    const response = await fetch(`${MAIN_URL}/movie/upcoming?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&page=${page}`);
-    const json = await response.json();
-
-    return json.results;
-};
-
-export const getPeople: getActors = async(locale = "en", page = 1) => {
+export const getPeople: GetActors = async(locale = "en", page = 1) => {
     const response = await fetch(`${MAIN_URL}/person/popular?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&page=${page}`);
     const json = await response.json();
 
     return json.results;
 };
 
-export const getSearchData: getMovies = async(locale = "en", page = 1, query = "") => {
+export const getSearchData: GetMovies = async(locale, page, query = "") => {
     const response = await fetch("/api/search", {
         method: "POST", 
         body: JSON.stringify({
@@ -41,7 +37,7 @@ export const getSearchData: getMovies = async(locale = "en", page = 1, query = "
     return json.results;
 };
 
-export const getMovieById: getMovie = async(locale = "en", id) => {
+export const getMovieById: GetMovie = async(locale = "en", id) => {
     const response = await fetch(`${MAIN_URL}/movie/${id}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&append_to_response=videos,credits`);
     const json = await response.json();
 

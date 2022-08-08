@@ -2,8 +2,8 @@ import type { GetStaticProps, NextPage } from "next";
 import SliderHeader from "../components/SliderHeader/SliderHeader";
 
 import SliderContent from "../components/Sliders/SliderContent";
-import { getPeople, getPopularMovies, getUpcomingMovies } from "../libs/getData";
-import { IActor, IHome, IMovie } from "../types";
+import { getMovies, getPeople } from "../libs/getData";
+import { IActor, IHome, IMovie, TypeContent } from "../types";
 
 const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
     return (
@@ -12,13 +12,13 @@ const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
             <SliderContent
                 header_title="Popular Movies"
                 data={popular}
-                next="/movies/popular"
+                next="/movies?type=popular&page=1"
                 type="movies"
             /> 
             <SliderContent 
                 header_title="Upcoming Movies"
                 data={upcoming}
-                next="/movies/upcoming"
+                next="/movies?type=upcoming&page=1"
                 type="movies"
             /> 
             {/* <SliderVideos 
@@ -37,14 +37,14 @@ const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async({locale}) => {
-    const popular = await getPopularMovies(locale);
-    const upcoming = await getUpcomingMovies(locale);
+    const popular = await getMovies(locale as string, "1", TypeContent.popular);
+    const upcoming = await getMovies(locale as string, "1", TypeContent.upcoming);
     const people = await getPeople();
 
     return {
         props: {
-            popular: (popular as IMovie[]),
-            upcoming: (upcoming as IMovie[]),
+            popular: (popular.data as IMovie[]),
+            upcoming: (upcoming.data as IMovie[]),
             people: (people as IActor[]),
             home: true
         }

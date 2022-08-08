@@ -14,7 +14,7 @@ const  SearchList: FC<ISearchList>= ({id, title, genre_ids, vote_average, onClic
     genre_ids = genres((genre_ids as number[] | []), locale);
 
     return (
-        <Link href={`/movie/${id}`}>
+        <Link href={`/movies/${id}`}>
             <a>
                 <div 
                     className={styles.search__data_box__data}

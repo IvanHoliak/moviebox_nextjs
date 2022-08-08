@@ -136,6 +136,11 @@ export interface ISliderVideos {
     header_title: string;
 };
 //Fetch
-export type getMovies = (locale?: string, page?: number, query?: string) => Promise<IMovie[]>;
-export type getMovie = (locale?: string, id?: string) => Promise<IMovieDetails>;
-export type getActors = (locale?: string, page?: number) => Promise<IActor[]>;
+export enum TypeContent {
+    popular = "popular",
+    upcoming = "upcoming"
+};
+
+export type GetMovies = (locale: string, page: string, query: TypeContent.popular | TypeContent.upcoming | string) => Promise<{data: IMovie[], totalPages: number}>;
+export type GetMovie = (locale?: string, id?: string) => Promise<IMovieDetails>;
+export type GetActors = (locale?: string, page?: number) => Promise<IActor[]>;

@@ -9,7 +9,7 @@ import { MAIN_IMAGE_URL } from "../../constants";
 import { getMovieById } from "../../libs/getData";
 import { IMovieDetails } from "../../types";
 
-import styles from "./Movies.module.scss";
+import styles from "./MovieId.module.scss";
 
 interface IMoviePage {
     movie: IMovieDetails;
