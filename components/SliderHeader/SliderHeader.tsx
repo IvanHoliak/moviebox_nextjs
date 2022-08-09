@@ -13,7 +13,7 @@ const SliderHeaderData: ISlideHeader[] = [
             tomato: "89%"
         },
         img_src: "/assets/img/john_wick.jpg",
-        link: "/movie/458156"
+        link: "/movies/458156"
     },
     {
         id: 2,
@@ -24,7 +24,7 @@ const SliderHeaderData: ISlideHeader[] = [
             tomato: "30%"
         },
         img_src: "/assets/img/jurassic_park.jpg",
-        link: "/movie/507086"
+        link: "/movies/507086"
     },
     {
         id: 3,
@@ -35,7 +35,7 @@ const SliderHeaderData: ISlideHeader[] = [
             tomato: "70%"
         },
         img_src: "/assets/img/minions.jpg",
-        link: "/movie/438148"
+        link: "/movies/438148"
     },
     {
         id: 4,
@@ -46,7 +46,7 @@ const SliderHeaderData: ISlideHeader[] = [
             tomato: "66%"
         },
         img_src: "/assets/img/thor.jpg",
-        link: "/movie/616037"
+        link: "/movies/616037"
     },
     {
         id: 5,
@@ -57,7 +57,7 @@ const SliderHeaderData: ISlideHeader[] = [
             tomato: "97%"
         },
         img_src: "/assets/img/top_gun.jpg",
-        link: "/movie/361743"
+        link: "/movies/361743"
     },
 ];
 
