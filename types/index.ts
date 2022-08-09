@@ -78,6 +78,38 @@ export interface IActor {
     character?: string;
 };
 
+export interface IActorDetails {
+    adult?: boolean;
+    also_known_as?: string[];
+    biography?:  string;
+    birthday?: string;
+    deathday?: string;
+    gender?: number;
+    homepage?: string;
+    id?: number;
+    imdb_id?: string;
+    known_for_department?: string;
+    name?: string;
+    place_of_birth?: string;
+    popularity?: number;
+    profile_path?: string;
+    movie_credits: {
+        cast: IMovie[]
+    };
+    images: {
+        profiles: IImage[]
+    };
+};
+
+export interface IImage {
+    aspect_ratio?: number;
+    height?: number;
+    iso_639_1?: string | null;
+    file_path?: string;
+    vote_average?: number;
+    vote_count?: number;
+    width?: number;
+}
 export interface IGenres {
     id: number;
     "name_en": string;
@@ -90,6 +122,7 @@ export interface IHome {
     upcoming: IMovie[];
     people: IActor[];
     home: boolean;
+    title: string;
 };
 
 //Header
@@ -143,4 +176,5 @@ export enum TypeContent {
 
 export type GetMovies = (locale: string, page: string, type: TypeContent.popular | TypeContent.upcoming | string) => Promise<{data: IMovie[], totalPages: number}>;
 export type GetMovie = (locale?: string, id?: string) => Promise<IMovieDetails>;
-export type GetActors = (locale?: string, page?: number) => Promise<IActor[]>;
+export type GetActors = (locale?: string, page?: string) => Promise<{data: IActor[], totalPages: number}>;
+export type GetActor = (locale: string, id: string) => Promise<IActorDetails>;

@@ -182,7 +182,8 @@ export const getServerSideProps: GetServerSideProps = async({locale, params}) =>
     return {
         props: {
             movie,
-            home: false
+            home: false,
+            title: `Movie Box | ${movie?.title || ""}`
         }
     }
 };

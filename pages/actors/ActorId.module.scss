@@ -1,0 +1,54 @@
+@import "../../styles/mixins";
+
+.actor_details {
+    margin-top: 100px;
+    width: 100%;
+
+    &__main {
+        @include display_flex(row, flex-start, flex-start, nowrap);
+        width: 100%;
+        gap: 20px;
+
+        &__person {
+            min-width: 250px;
+            @include display_flex(column, center, flex-start, nowrap);
+            gap: 20px;
+
+            &_known_as {
+                width: 100%;
+                @include font(18px, 500, 20px, #000);
+                @include display_flex(column, flex-start, flex-start, wrap);
+                gap: 10px;
+            }
+        }
+
+        &__desc {
+            @include display_flex(column, flex-start, flex-start, nowrap);
+            gap: 10px;
+
+            &_name {
+                @include font(24px, 700, 28px, #000);
+                
+                span {
+                    @include font(14px, 400, 18px, #9ca3af);
+                }
+            }
+            
+            &_subtitle {
+                @include font(18px, 500, 22px, #9ca3af);
+            }
+            
+            &_biography {
+                @include font(20px, 500, 24px, #000);
+            }
+        }
+    }
+}
+
+@media (max-width: 767px){ 
+    .actor_details {
+        &__main {
+            @include display_flex(column, center, center, nowrap);
+        }
+    }
+}

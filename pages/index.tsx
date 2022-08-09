@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import SliderHeader from "../components/SliderHeader/SliderHeader";
 
 import SliderContent from "../components/Sliders/SliderContent";
@@ -20,14 +21,11 @@ const Home: NextPage<IHome> = ({popular, upcoming, people}) => {
                 data={upcoming}
                 next="/movies?type=upcoming&page=1"
                 type="movies"
-            /> 
-            {/* <SliderVideos 
-                header_title="Exclusive Videos"
-            /> */}
+            />
             <SliderContent 
                 header_title="Featured Casts"
                 data={people}
-                next="/actors"
+                next="/actors?page=1"
                 type="actors"
             />
         </>
@@ -39,14 +37,15 @@ export default Home;
 export const getStaticProps: GetStaticProps = async({locale}) => {
     const popular = await getMovies(locale as string, "1", TypeContent.popular);
     const upcoming = await getMovies(locale as string, "1", TypeContent.upcoming);
-    const people = await getPeople();
+    const people = await getPeople(locale as string, "1");
 
     return {
         props: {
             popular: (popular.data as IMovie[]),
             upcoming: (upcoming.data as IMovie[]),
-            people: (people as IActor[]),
-            home: true
+            people: (people.data as IActor[]),
+            home: true,
+            title: "Movie Box"
         }
     };
 };

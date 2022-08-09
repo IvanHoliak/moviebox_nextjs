@@ -5,7 +5,7 @@ import "../styles/globals.scss";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
-        <Layout home={pageProps.home}>
+        <Layout home={pageProps.home} title={pageProps.title}>
             <Component {...pageProps} />
         </Layout>
     );

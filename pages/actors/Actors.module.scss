@@ -1,0 +1,29 @@
+@import "../../styles/mixins";
+
+.actors {
+    width: 100%;
+    margin-top: 100px;
+
+    &_box {
+
+        &__body {
+            @include display_flex(row, space-between, flex-start, wrap);
+            gap: 20px 0;
+
+            &__card{
+                max-width: 250px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1240px) {
+    .actors {
+        &_box {
+            &__body {
+                @include display_flex(row, center, flex-start, wrap);
+                gap: 20px 60px;
+            }
+        }
+    }
+}

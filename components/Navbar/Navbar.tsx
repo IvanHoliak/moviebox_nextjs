@@ -29,7 +29,9 @@ const Navbar: FC<{home: boolean}> = ({home}) => {
             document.addEventListener("scroll", onScrollHandler);
     
             return () => document.removeEventListener("scroll", onScrollHandler);
-        };
+        }else{
+            setScrolled(false);
+        }
     }, [home]);
 
     return (

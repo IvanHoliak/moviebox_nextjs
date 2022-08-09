@@ -37,7 +37,7 @@ const MovieContent: FC<IMovie> = ({id, genre_ids, poster_path, release_date, tit
                             width="35"
                             height="17"
                         />
-                        <span>{vote_average * 10}.0 / 100</span>
+                        <span>{vote_average.toFixed(1)} / 10</span>
                     </div>
                     <p className={styles.card_wrapper__body_genres}>{genre_ids?.join(", ")}</p>
                 </div>

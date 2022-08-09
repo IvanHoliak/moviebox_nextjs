@@ -1,5 +1,5 @@
 import { MAIN_URL } from "../constants";
-import { GetMovies, GetActors, GetMovie } from "../types";
+import { GetMovies, GetActors, GetMovie, GetActor } from "../types";
 
 const createLocale = (locale: string) => {
     if(locale === "ua") return "uk";
@@ -16,11 +16,21 @@ export const getMovies: GetMovies = async(locale = "en", page = "1", type = "pop
     };
 };
 
-export const getPeople: GetActors = async(locale = "en", page = 1) => {
+export const getPeople: GetActors = async(locale = "en", page = "1") => {
     const response = await fetch(`${MAIN_URL}/person/popular?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&page=${page}`);
     const json = await response.json();
+    
+    return {
+        data: json.results,
+        totalPages: json.total_pages
+    };
+};
 
-    return json.results;
+export const getPeopleById: GetActor = async(locale = "en", id) => {
+    const response = await fetch(`${MAIN_URL}/person/${id}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&append_to_response=images,movie_credits`);
+    const json = await response.json();
+
+    return json;
 };
 
 export const getSearchData: GetMovies = async(locale = "en", page = "1", query = "") => {

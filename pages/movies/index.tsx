@@ -1,7 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import CardContent from "../../components/Cards/CardContent";
 import MovieContent from "../../components/Cards/MovieContent";
 import Pagination from "../../components/Pagination/Pagination";
 import { getMovies } from "../../libs/getData";
@@ -9,14 +8,14 @@ import { IMovie, TypeContent } from "../../types";
 
 import styles from "./Movies.module.scss";
 
-const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string}> = ({data, totalPages, type_value}) => {
+const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string, home: boolean}> = ({data, totalPages, type_value}) => {
     const [typeValue, setTypeValue] = useState<string>(type_value);
     const router = useRouter();
     const {locale, pathname, query} = router;
+    const [currentPage, setCurrentPage] = useState<string>(query.page as string || "1");
 
     const onChangeContentTypeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const content_type = e.target.value;
-        setTypeValue(content_type);
         router.push(
             { 
                 pathname, 
@@ -27,6 +26,8 @@ const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string}>
                 } 
             }, undefined, {locale}
         );
+        setTypeValue(content_type);
+        setCurrentPage("1");
     };
 
     return (
@@ -58,7 +59,11 @@ const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string}>
                     </div>
                 </div>
             </div>
-            <Pagination max={type_value === "popular" ? "500" : `${totalPages}`} />
+            <Pagination 
+                max={type_value === "popular" ? "500" : `${totalPages}`} 
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
         </div>
     );
 };
@@ -84,7 +89,9 @@ export const getServerSideProps: GetServerSideProps = async({query, locale}) => 
         props: {
             data: movies.data,
             totalPages: movies.totalPages,
-            type_value: query.type
+            type_value: query.type,
+            home: false,
+            title: `Movie Box | ${query.type}`
         }
     };
 };

@@ -13,7 +13,7 @@ const ImageBox: FC<IImageBox> = ({src, srcError, alt, width, height, className})
     };
 
     return (
-        <div className={isLoaded ? "" : styles.image_skeleton}>
+        <div className={isLoaded ? styles.image_box : styles.image_skeleton}>
             {src ? (
                 <Image 
                     loader={customLoader}

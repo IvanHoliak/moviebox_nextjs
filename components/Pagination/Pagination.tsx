@@ -3,10 +3,15 @@ import { FC, useEffect, useState } from "react";
 import { usePagination } from "../../hooks/usePagination";
 import styles from "./Pagination.module.scss";
 
-const Pagination: FC<{max: string;}> = ({max = "50"}) => {
+interface IPagination {
+    max: string;
+    currentPage: string;
+    setCurrentPage: (page: string) => void;
+};
+
+const Pagination: FC<IPagination> = ({max = "50", currentPage, setCurrentPage}) => {
     const router = useRouter();
-    const {locale, pathname, asPath, query} = router;
-    const [currentPage, setCurrentPage] = useState<string>(query.page as string || "1")
+    const {locale, pathname, query} = router;
     const [pages, setPages] = useState<string[]>([]);
     const createPagination = usePagination(20 * +max, 20, 1, +currentPage);
     
