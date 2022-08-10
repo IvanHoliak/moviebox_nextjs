@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-type useModal = () => {isOpen: boolean, setIsOpen: (val: boolean) => void}
+type useModal = () => {isOpen: boolean, setIsOpen: (val: boolean) => void};
 
 export const useModal: useModal = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);

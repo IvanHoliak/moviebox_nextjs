@@ -7,7 +7,7 @@ const createLocale = (locale: string) => {
 };
 
 export const getMovies: GetMovies = async(locale = "en", page = "1", type = "popular") => {
-    const response = await fetch(`${MAIN_URL}/movie/${type}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&page=${page}`);
+    const response = await fetch(`${MAIN_URL}/movie/${type}?api_key=${process.env.TMDB_API_KEY}&language=${createLocale(locale)}&page=${page}`);
     const json = await response.json();
 
     return {
@@ -17,7 +17,7 @@ export const getMovies: GetMovies = async(locale = "en", page = "1", type = "pop
 };
 
 export const getPeople: GetActors = async(locale = "en", page = "1") => {
-    const response = await fetch(`${MAIN_URL}/person/popular?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&page=${page}`);
+    const response = await fetch(`${MAIN_URL}/person/popular?api_key=${process.env.TMDB_API_KEY}&language=${createLocale(locale)}&page=${page}`);
     const json = await response.json();
     
     return {
@@ -27,7 +27,7 @@ export const getPeople: GetActors = async(locale = "en", page = "1") => {
 };
 
 export const getPeopleById: GetActor = async(locale = "en", id) => {
-    const response = await fetch(`${MAIN_URL}/person/${id}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&append_to_response=images,movie_credits`);
+    const response = await fetch(`${MAIN_URL}/person/${id}?api_key=${process.env.TMDB_API_KEY}&language=${createLocale(locale)}&append_to_response=images,movie_credits`);
     const json = await response.json();
 
     return json;
@@ -51,7 +51,7 @@ export const getSearchData: GetMovies = async(locale = "en", page = "1", query =
 };
 
 export const getMovieById: GetMovie = async(locale = "en", id) => {
-    const response = await fetch(`${MAIN_URL}/movie/${id}?api_key=561004ed4b1ccdd989051a9e43806a89&language=${createLocale(locale)}&append_to_response=videos,credits`);
+    const response = await fetch(`${MAIN_URL}/movie/${id}?api_key=${process.env.TMDB_API_KEY}&language=${createLocale(locale)}&append_to_response=videos,credits`);
     const json = await response.json();
 
     return json;
