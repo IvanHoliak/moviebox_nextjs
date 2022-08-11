@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import YouTube, { YouTubeProps } from 'react-youtube';
 
@@ -29,6 +29,10 @@ const Modal: FC<IModal> = ({isOpen, setIsOpen, src}) => {
         },
     };
 
+    const onPlayerReady: YouTubeProps['onReady'] = (e) => {
+        e.target.pauseVideo();
+    };
+    
     useEffect(() => {
         window.addEventListener("resize", (e) => onResizeHandler(e));
 
@@ -46,9 +50,6 @@ const Modal: FC<IModal> = ({isOpen, setIsOpen, src}) => {
         document.body.classList.remove("modal-open");
     };
 
-    const onPlayerReady: YouTubeProps['onReady'] = (e) => {
-        e.target.pauseVideo();
-    }
 
     const ModalContent = (
         <div 
@@ -66,9 +67,9 @@ const Modal: FC<IModal> = ({isOpen, setIsOpen, src}) => {
             ModalContent,
             document.getElementById("modal-root") as Element
         );
-    }else{
-        return null;
     };
+
+    return null;
 };
 
 export default Modal;

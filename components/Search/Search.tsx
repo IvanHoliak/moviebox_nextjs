@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
 import { getSearchData } from "../../libs/getData";
+import Loader from "../Loader/Loader";
 
 import styles from "./Search.module.scss";
 import SearchList from "./SearchList";
@@ -14,8 +15,8 @@ interface ISearch {
 const Search: FC<ISearch> = ({fixed}) => {
     const [showSearchData, setShowSearchData] = useState<boolean>(false);
     const { locale } = useRouter();
-    const {value, setValue, data} = useDebounce(1000, getSearchData, locale || "en");
-
+    const {value, setValue, data, isLoaded} = useDebounce(1000, getSearchData, locale || "en");
+    
     const onChangeSearchValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         setValue(e.target.value);
@@ -55,7 +56,16 @@ const Search: FC<ISearch> = ({fixed}) => {
                 height="16"
                 className={styles.search__image}
             />
-            {data && showSearchData && (
+            {isLoaded && (
+                <div
+                    className={styles.search__data_box}
+                >
+                    <div className={styles.search__data_box__loader}>
+                        <Loader />
+                    </div>
+                </div>
+            )}
+            {!isLoaded && data && data.data.length && showSearchData && (
                 <div
                     className={styles.search__data_box}
                 >

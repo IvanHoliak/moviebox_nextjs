@@ -44,6 +44,11 @@
         a:not(:last-child){
             border-bottom: 1px solid rgba(0, 0, 0, .1);
         }
+
+        &__loader {
+            @include display_flex(row, center, center, nowrap);
+            padding: 20px 0;
+        }
         
         &__data {
             @include font(14px, 700, 18px, #000);

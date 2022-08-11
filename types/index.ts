@@ -174,7 +174,7 @@ export enum TypeContent {
     upcoming = "upcoming"
 };
 
-export type GetMovies = (locale: string, page: string, type: TypeContent.popular | TypeContent.upcoming | string) => Promise<{data: IMovie[], totalPages: number}>;
-export type GetMovie = (locale?: string, id?: string) => Promise<IMovieDetails>;
-export type GetActors = (locale?: string, page?: string) => Promise<{data: IActor[], totalPages: number}>;
+export type GetMovies = (locale: string, page: string, type?: string, query?: string) => Promise<{data: IMovie[], totalPages: number}>;
+export type GetMovie = (locale: string, id: string) => Promise<IMovieDetails>;
+export type GetActors = (locale: string, page: string) => Promise<{data: IActor[], totalPages: number}>;
 export type GetActor = (locale: string, id: string) => Promise<IActorDetails>;

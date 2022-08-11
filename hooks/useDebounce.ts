@@ -12,19 +12,30 @@ type useDebounce = (
         data: IMovie[],
         totalPages: number
     } | null;
+    isLoaded: boolean;
 };
 
 const useDebounce: useDebounce = (delay, callback, locale) => {
     const [value, setValue] = useState<string>("");
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
     const [data, setData] = useState<{
         data: IMovie[],
         totalPages: number
     } | null>(null);
 
     useEffect(() => {
+        if(value.length){
+            setIsLoaded(true);
+        }else{
+            setIsLoaded(false);
+        };
+
         const timer = setTimeout(() => {
             if (value.length) {
-                callback(locale, "1", value).then((res) => {setData(res)});
+                callback(locale, "1", value).then((res) => {
+                    setData(res);
+                    setIsLoaded(false);
+                });
             };
         }, delay);
 
@@ -37,7 +48,8 @@ const useDebounce: useDebounce = (delay, callback, locale) => {
     return {
         value,
         setValue,
-        data
+        data,
+        isLoaded
     };
 };
 

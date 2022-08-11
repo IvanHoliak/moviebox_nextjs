@@ -71,19 +71,9 @@ const Movies: NextPage<{data: IMovie[], totalPages: number, type_value: string, 
 export default Movies;
 
 export const getServerSideProps: GetServerSideProps = async({query, locale}) => {
-    let typeContent: string = "";
     const {page, type} = query;
-    switch(type){
-        case TypeContent.popular:
-            typeContent = "popular";
-            break;
-        case TypeContent.upcoming:
-            typeContent = "upcoming";
-            break;
-        default:
-            typeContent = "popular";
-    };
-    const movies = await getMovies(locale as string, page as string, typeContent);
+
+    const movies = await getMovies(locale as string, page as string, type as string);
 
     return {
         props: {
