@@ -1,3 +1,4 @@
+@import "../../styles/variables";
 @import "../../styles/mixins";
 
 .movies {
@@ -9,10 +10,15 @@
             width: 250px;
 
             select {
-                @include font(20px, 500, 30px, #000);
+                @include font(20px, 500, 30px, theme-var($--color));
+                background: transparent;
                 width: 100%;
                 height: 40px;
                 padding: 5px 10px;
+
+                option {
+                    background: theme-var($--bgcolor);
+                }
             }
         }
 

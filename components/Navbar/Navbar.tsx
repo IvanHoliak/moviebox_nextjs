@@ -5,6 +5,7 @@ import React, { FC, useEffect, useState } from "react";
 import Search from "../Search/Search";
 
 import styles from "./Navbar.module.scss";
+import NavbarThemeSwitcher from "./NavbarThemeSwitcher";
 
 const Navbar: FC<{home: boolean}> = ({home}) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
@@ -55,6 +56,7 @@ const Navbar: FC<{home: boolean}> = ({home}) => {
                         </Link>
                         <Search fixed={scrolled || !home ? true : false}/>
                         <div className={styles.navigation_wrapper__body}>
+                            <NavbarThemeSwitcher />
                             <div className={styles.navigation_wrapper__body_language}>
                                 <label htmlFor="language">
                                     <Image 

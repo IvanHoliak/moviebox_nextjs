@@ -1,0 +1,30 @@
+$--bgcolor: --bgcolor;
+$--color: --color;
+$--color-primary: --color-primary;
+$--color-secondary: --color-secondary;
+$--color-secondary-red: --color-secondary-red;
+$--color-line: --color-line;
+$--navbarbgcolor: --navbarbgcolor;
+$--iconcolor: --iconcolor;
+
+$theme-map-light: (
+    $--bgcolor: #fff,
+    $--navbarbgcolor: #fff,
+    $--iconcolor: invert(0%) sepia(90%) saturate(1%) hue-rotate(316deg) brightness(89%) contrast(100%),
+    $--color: #000,
+    $--color-primary: #111827,
+    $--color-secondary: #9CA3AF,
+    $--color-secondary-red: #BE123C,
+    $--color-line: rgba(0, 0, 0, .1),
+);
+
+$theme-map-dark: (
+    $--bgcolor: #0e0e10,
+    $--navbarbgcolor: #18181b,
+    $--iconcolor: invert(100%) sepia(0%) saturate(7393%) hue-rotate(129deg) brightness(118%) contrast(95%),
+    $--color: #fff,
+    $--color-primary: #fff,
+    $--color-secondary: #9CA3AF,
+    $--color-secondary-red: #fff,
+    $--color-line: rgba(255, 255, 255, .1),
+);

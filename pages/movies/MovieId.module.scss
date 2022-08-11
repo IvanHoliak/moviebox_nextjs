@@ -1,3 +1,4 @@
+@import "../../styles/variables";
 @import "../../styles/mixins";
 
 .movie_details {
@@ -19,16 +20,16 @@
             gap: 10px;
 
             &_title {
-                @include font(28px, 700, 30px, #000);
+                @include font(28px, 700, 30px, theme-var($--color));
             }
             
             &_subtitle {
-                @include font(14px, 400, 18px, #9ca3af);
+                @include font(14px, 400, 18px, theme-var($--color-secondary));
             }
 
             &_rate {
                 @include display_flex(row, flex-start, center, nowrap);
-                @include font(16px, 500, 18px, #000);
+                @include font(16px, 500, 18px, theme-var($--color));
                 gap: 10px;
             }
 
@@ -39,19 +40,27 @@
                 
                 p {
                     @include display_flex(row, center, center, nowrap);
-                    @include font(16px, 500, 18px, #000);
+                    @include font(16px, 500, 18px, theme-var($--color));
                     gap: 10px;
+                }
+                 
+                img {
+                    filter: theme-var($--iconcolor);
                 }
             }
 
             &_runtime {
                 @include display_flex(row, center, center, nowrap);
-                @include font(16px, 500, 18px, #000);
+                @include font(16px, 500, 18px, theme-var($--color));
                 gap: 10px;
+
+                img {
+                    filter: theme-var($--iconcolor);
+                }
             }
 
             &_tagline, &_overview {
-                @include font(18px, 400, 20px, #000);
+                @include font(18px, 400, 20px, theme-var($--color));
             }
 
             &_companies {
@@ -73,11 +82,10 @@
                         height: 70px;
                         border-radius: 50%;
                         background: #efefef;
-                        // margin-bottom: 5px;
                     }
 
                     &__name {
-                        @include font(14px, 400, 14px, #000);
+                        @include font(14px, 400, 14px, theme-var($--color));
                     }
                 }
             }

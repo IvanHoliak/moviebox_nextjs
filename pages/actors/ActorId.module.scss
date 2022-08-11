@@ -1,3 +1,4 @@
+@import "../../styles/variables";
 @import "../../styles/mixins";
 
 .actor_details {
@@ -16,7 +17,7 @@
 
             &_known_as {
                 width: 100%;
-                @include font(18px, 500, 20px, #000);
+                @include font(18px, 500, 20px, theme-var($--color));
                 @include display_flex(column, flex-start, flex-start, wrap);
                 gap: 10px;
             }
@@ -27,19 +28,19 @@
             gap: 10px;
 
             &_name {
-                @include font(24px, 700, 28px, #000);
+                @include font(24px, 700, 28px, theme-var($--color));
                 
                 span {
-                    @include font(14px, 400, 18px, #9ca3af);
+                    @include font(14px, 400, 18px, theme-var($--color-secondary));
                 }
             }
             
             &_subtitle {
-                @include font(18px, 500, 22px, #9ca3af);
+                @include font(18px, 500, 22px, theme-var($--color-secondary));
             }
             
             &_biography {
-                @include font(20px, 500, 24px, #000);
+                @include font(20px, 500, 24px, theme-var($--color));
             }
         }
     }

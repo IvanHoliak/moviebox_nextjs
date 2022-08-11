@@ -9,10 +9,13 @@
 //Slick slider
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
+//Themes
+@import "./themes";
 
 html,
 body {
     font-family: "DM Sans", sans-serif;
+    background: theme-var($--bgcolor);
 }
 
 h1,
@@ -60,7 +63,7 @@ body.modal-open {
 .line {
     width: 100%;
     height: 1px;
-    background: rgba(0, 0, 0, .1);
+    background: theme-var($--color-line);
     margin: 10px 0;
 }
 

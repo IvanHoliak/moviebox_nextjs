@@ -1,3 +1,4 @@
+@import "../../styles/variables";
 @import "../../styles/mixins";
 
 .card{
@@ -56,16 +57,16 @@
             width: 100%;
 
             &_release_date {
-                @include font(12px, 700, 16px, #9CA3AF);
+                @include font(12px, 700, 16px, theme-var($--color-secondary));
                 margin: 12px 0;
             }
 
             &_title, &_name {
-                @include font(18px, 700, 23px, #111827);
+                @include font(18px, 700, 23px, theme-var($--color-primary));
             }
 
             &_character {
-                @include font(18px, 700, 23px, #9CA3AF);
+                @include font(18px, 700, 23px, theme-var($--color-secondary));
             }
 
             &_name {
@@ -75,12 +76,12 @@
             .__imdb {
                 @include display_flex(row, flex-start, center, nowrap);
                 gap: 10px;
-                @include font(12px, 400, 12px, #111827);
+                @include font(12px, 400, 12px, theme-var($--color-primary));
                 margin: 12px 0;
             }
 
             &_genres {
-                @include font(12px, 700, 16px, #9CA3AF);
+                @include font(12px, 700, 16px, theme-var($--color-secondary));
             }
         }
     }
