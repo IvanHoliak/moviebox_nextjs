@@ -177,7 +177,7 @@ const Movie: NextPage<IMoviePage> = ({movie, home}) => {
 export default Movie;
 
 export const getServerSideProps: GetServerSideProps = async({locale, params}) => {
-    const movie = await getMovieById(locale, (params?.id as string));
+    const movie = await getMovieById(locale as string, (params?.id as string));
     
     return {
         props: {
